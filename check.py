@@ -1,7 +1,6 @@
 import cv2
 import numpy as np
 checks = cv2.imread('test1.png',0)
-checka= cv2.imread("grb.jpg",0)
 def shapematch(check):
     ret, thresh = cv2.threshold(check,127, 255,0)
     cv2.imshow('shape',thresh)
@@ -143,355 +142,96 @@ def shapematch(check):
         flag=1
     else:
         flag=0
-    return(flag,sindex[i])
-
-def alphanumeric(check):
-    ret, thresh = cv2.threshold(check,127, 255,0)
-    cv2.imshow('alpha',thresh)
-    adic={1:'A',2:'B',3:'C',4:'D',5:'E',6:'F',7:'G',8:'H',9:'I',10:'J',11:'K',12:'L',13:'M',14:'N',15:'O',16:'P',17:'Q',18:'R',19:'S',20:'T',21:'U',22:'V',23:'W',24:'X',25:'Y',26:'Z',27:'0',28:'1',29:'2',30:'3',31:'4',32:'5',33:'6',34:'7',35:'8',36:'9'}
+    return(flag,sindex[i],min)
+def checkalpha(check):
+    adic={0 : 'AN.png',1 : 'AE.png',2 : 'AS.png',3 : 'AW.png',
+    4 : 'BN.png',5 : 'BE.png',6 : 'BS.png',7 : 'BW.png',
+    8 : 'CN.png',9 : 'CE.png',10 : 'CS.png',11 : 'CW.png',
+    12 : 'DN.png',13 : 'DE.png',14 : 'DS.png',15 : 'DW.png',
+    16 : 'EN.png',17 : 'EE.png',18 : 'ES.png',19 : 'EW.png',
+    20 : 'FN.png',21 : 'FE.png',22 : 'FS.png',23 : 'FW.png',
+    24 : 'GN.png',25 : 'GE.png',26 : 'GS.png',27 : 'GW.png',
+    28 : 'JN.png',29 : 'JE.png',30 : 'JS.png',31 : 'JW.png',
+    32 : 'KN.png',33 : 'KE.png',34 : 'KS.png',35 : 'KW.png',
+    36 : 'LN.png',37 : 'LE.png',38 : 'LS.png',39 : 'LW.png',
+    40 : 'MN.png',41 : 'ME.png',42 : 'MS.png',43 : 'MW.png',
+    44 : 'PN.png',45 : 'PE.png',46 : 'PS.png',47 : 'PW.png',
+    48 : 'QN.png',49 : 'QE.png',50 : 'QS.png',51 : 'QW.png',
+    52 : 'RN.png',53 : 'RE.png',54 : 'RS.png',55 : 'RW.png',
+    56 : 'SN.png',57 : 'SE.png',58 : 'SS.png',59 : 'SW.png',
+    60 : 'TN.png',61 : 'TE.png',62 : 'TS.png',63 : 'TW.png',
+    64 : 'UN.png',65 : 'UE.png',66 : 'US.png',67 : 'UW.png',
+    68 : 'VN.png',69 : 'VE.png',70 : 'VS.png',71 : 'VW.png',
+    72 : 'WN.png',73 : 'WE.png',74 : 'WS.png',75 : 'WW.png',
+    76 : 'YN.png',77 : 'YE.png',78 : 'YS.png',79 : 'YW.png',
+    80 : 'ZN.png',81 : 'ZE.png',82 : 'ZS.png',83 : 'ZW.png',
+    84 : '1N.png',85 : '1E.png',86: '1S.png',87 : '1W.png',
+    88 : '2N.png',89 : '2E.png',90 : '2S.png',91 : '2W.png',
+    92 : '3N.png',93 : '3E.png',94 : '3S.png',95 : '3W.png',
+    96 : '4N.png',97 : '4E.png',98 : '4S.png',99 : '4W.png',
+    100 : '5N.png',101 : '5E.png',102 : '5S.png',103 : '5W.png',
+    104 : '7N.png',105 : '7E.png',106 : '7S.png',107 : '7W.png',
+    108 : '8N.png',109 : '8E.png',110 : '8S.png',111 : '8W.png'}
     alist=[]
-    a=cv2.imread('a.png',0)
-    b=cv2.imread('b.png',0)
-    c=cv2.imread('c.png',0)
-    d=cv2.imread('d.png',0)
-    e=cv2.imread('e.png',0)
-    f=cv2.imread('f.png',0)
-    g=cv2.imread('g.jpg',0)
-    h=cv2.imread('h.png',0)
-    i=cv2.imread('i.jpg',0)
-    j=cv2.imread('j.png',0)
-    k=cv2.imread('k.png',0)
-    l=cv2.imread('l.png',0)
-    m=cv2.imread('m.png',0)
-    n=cv2.imread('n.jpg',0)
-    o=cv2.imread('o.png',0)
-    p=cv2.imread('p.png',0)
-    q=cv2.imread('q.png',0)
-    r=cv2.imread('r.jpeg',0)
-    s=cv2.imread('s.png',0)
-    t=cv2.imread('t.png',0)
-    u=cv2.imread('u.png',0)
-    v=cv2.imread('v.jpg',0)
-    w=cv2.imread('w.png',0)
-    x=cv2.imread('x.png',0)
-    y=cv2.imread('y.png',0)
-    z=cv2.imread('z.png',0)
-
-    n0=cv2.imread('0.png',0)
-    n1=cv2.imread('1.png',0)
-    n2=cv2.imread('2.png',0)
-    n3=cv2.imread('3.png',0)
-    n4=cv2.imread('4.jpg',0)
-    n5=cv2.imread('5.png',0)
-    n6=cv2.imread('6.png',0)
-    n7=cv2.imread('7.png',0)
-    n8=cv2.imread('8.png',0)
-    n9=cv2.imread('9.png',0)
-
-
-    ret, thresh2 = cv2.threshold(a, 127, 255,0)
+    bdic={}
+    ret, thresh = cv2.threshold(check,127, 255,0)
     _,contours,hierarchy= cv2.findContours(thresh,2,1)
     cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
+    ellipse = cv2.fitEllipse(cnt1)
+    cv2.ellipse(thresh,ellipse,(150,200,100))
+    fflag=0
+    cv2.imshow('t',thresh)
+    cv2.waitKey()
+    for i in adic:
+        temp=cv2.imread('Alpha/'+adic[i],0)
+        ret, thresh2 = cv2.threshold(temp, 127, 255,0)
+        _,contours,hierarchy = cv2.findContours(thresh2,2,1)
+        cnt2 = contours[0] 
+        ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
+        alist.append(ret)
+        if ret==0:
+            if i%4==0:
+                orientation='North'
+            elif i%4==1:
+                orientation='East'
+            elif i%4==2:
+                orientation='South'
+            elif i%4==3:
+                orientation='West'
+            flag=1
+            obj=adic[i][0]
+            fflag=1
+            min=0
+            break
+    if fflag==0:
+        min = alist[ 0 ]
+        a=0
+        b=0
+        for c in alist:
+            if c < min:
+                min = c
+                b=a
+            a+=1
+        obj=adic[b][0]
+        if b%4==0:
+                orientation='North'
+        elif b%4==1:
+                orientation='East'
+        elif b%4==2:
+                orientation='South'
+        elif b%4==3:
+                orientation='West'
+        if min<0.09:
+            flag=1
+        else:
+            flag=0
+    return(flag,obj,orientation,min)
 
-    ret, thresh2 = cv2.threshold(b, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-
-    ret, thresh2 = cv2.threshold(c, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-
-    ret, thresh2 = cv2.threshold(d, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-
-    ret, thresh2 = cv2.threshold(e, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-
-    ret, thresh2 = cv2.threshold(f, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-
-    ret, thresh2 = cv2.threshold(g, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-
-    ret, thresh2 = cv2.threshold(h, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-
-    ret, thresh2 = cv2.threshold(i, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-
-    ret, thresh2 = cv2.threshold(j, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-
-    ret, thresh2 = cv2.threshold(k, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-
-    ret, thresh2 = cv2.threshold(l, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-
-    ret, thresh2 = cv2.threshold(m, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-
-    ret, thresh2 = cv2.threshold(n, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-
-    ret, thresh2 = cv2.threshold(o, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-
-    ret, thresh2 = cv2.threshold(p, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-
-    ret, thresh2 = cv2.threshold(q, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-
-    ret, thresh2 = cv2.threshold(r, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-
-    ret, thresh2 = cv2.threshold(s, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-
-    ret, thresh2 = cv2.threshold(t, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-
-    ret, thresh2 = cv2.threshold(u, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-
-    ret, thresh2 = cv2.threshold(v, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-
-    ret, thresh2 = cv2.threshold(w, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-
-    ret, thresh2 = cv2.threshold(x, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-
-    ret, thresh2 = cv2.threshold(y, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-
-    ret, thresh2 = cv2.threshold(z, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-
-    ret, thresh2 = cv2.threshold(n0, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-
-    ret, thresh2 = cv2.threshold(n1, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-
-    ret, thresh2 = cv2.threshold(n2, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-
-    ret, thresh2 = cv2.threshold(n3, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-
-    ret, thresh2 = cv2.threshold(n4, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-
-    ret, thresh2 = cv2.threshold(n5, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-
-    ret, thresh2 = cv2.threshold(n6, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-
-    ret, thresh2 = cv2.threshold(n7, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-
-    ret, thresh2 = cv2.threshold(n8, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-
-    ret, thresh2 = cv2.threshold(n9, 127, 255,0)
-    _,contours,hierarchy= cv2.findContours(thresh,2,1)
-    cnt1 = contours[0]
-    _,contours,hierarchy = cv2.findContours(thresh2,2,1)
-    cnt2 = contours[0] 
-    ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-    alist.append(ret)
-    flag=0
-    min = alist[ 0 ]
-    ai=1
-    bi=1
-    for ci in alist:
-        if ci < min:
-            min = ci
-            bi=ai
-        ai+=1
-    if min<0.2:
-        flag=1
-    else:
-        flag=0
-    return(flag,adic[bi])
+tr=cv2.imread('grb.jpg',0)
+f,ob,ori,min=checkalpha(tr)
+print(f,ob,ori,min)
     
-shapematch(checka)
-alphanumeric(checks)
+f,ret,min=shapematch(checks)
+print(f,ret,min)
 cv2.waitKey()
 cv2.destroyAllWindows()
